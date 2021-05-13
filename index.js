@@ -4,6 +4,9 @@ const path = require('path');
 const redditData = require('./data.json');
 console.log(redditData);
 
+// serving static assets
+app.use(express.static(path.join(__dirname, 'public')));
+
 // allows us to use EJS
 app.set('view engine', 'ejs');
 
