@@ -14,6 +14,14 @@ app.get('/', (req, res) => {
     res.render('home');  // aka 'views/home.ejs'
 })
 
+app.get('/cats', (req, res) => {
+    const cats = [
+        'Blue', 'Rocket', 'Monty', 'Stephanie', 'Winston'
+    ]
+
+    res.render('cats', { allCats: cats });
+})
+
 app.get('/r/:subreddit', (req, res) => {
     const { subreddit } = req.params;
     res.render('subreddit', { subreddit });
