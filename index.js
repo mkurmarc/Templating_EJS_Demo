@@ -5,7 +5,7 @@ const redditData = require('./data.json');
 console.log(redditData);
 
 // serving static assets
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // can be any name but using public here
 
 // allows us to use EJS
 app.set('view engine', 'ejs');
@@ -41,7 +41,7 @@ app.get('/r/:subreddit', (req, res) => {
 
 app.get('/rand', (req, res) => {
     const num = Math.floor(Math.random() * 10) + 1;
-    res.render('random', { rand: num }); // the render method's 2nd arg accepts object with key-value pairs;
+    res.render('random', { num }); // the render method's 2nd arg accepts object with key-value pairs;
                                         // this object is pushed thru to html and accesible there with key.
 })
 
