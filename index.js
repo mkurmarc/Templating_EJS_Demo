@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const redditData = require('./data.json');
+console.log(redditData);
 
 // allows us to use EJS
 app.set('view engine', 'ejs');
@@ -24,7 +26,14 @@ app.get('/cats', (req, res) => {
 
 app.get('/r/:subreddit', (req, res) => {
     const { subreddit } = req.params;
-    res.render('subreddit', { subreddit });
+    const data = redditData[subreddit];
+    // if data not found then render diff ejs file
+    if(data) {
+        res.render('subreddit', { ...data }); // aka 'views/subreddit.ejs'
+
+    } else {
+        res.render('notfound', { subreddit }); // aka 'views/notfound.ejs'
+    }
 })
 
 app.get('/rand', (req, res) => {
