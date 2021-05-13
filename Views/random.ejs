@@ -8,8 +8,15 @@
 </head>
 
 <body>
-    <!-- rand  is accesible  -->
-    <h1>Your random number is: <%= rand %></h1> 
+    <!-- rand  is accesible; also, the js associated with it runs and displays result  -->
+    <h1>Your random number is: <%= rand %></h1>
+    <!-- below we are imbedding logic that renders a different h2 tag if it's an even or odd number -->
+    <% if(rand % 2 === 0){ %>
+    <h2>That is an even number!</h2>
+    <% } else { %> 
+    <h2>That is an odd number!</h2>
+    <% } %>
+         
 </body>
 
 </html>
